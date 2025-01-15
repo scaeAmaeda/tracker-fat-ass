@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS Meals (
+    identifiant INTEGER PRIMARY KEY AUTOINCREMENT,
+    date TEXT NOT NULL,
+    moment TEXT NOT NULL,
+    is300g INTEGER NOT NULL,
+    isnosugar INTEGER NOT NULL
+);

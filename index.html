@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+        <title>Tracker Fat Ass</title>
+    </head>
+    <body>
+        <div>
+            <h1>Tracker to calculate what is consumed</h1>
+        </div>
+        <hr>
+        <div>
+            <h2>New meal to add</h2>
+        </div>
+        <div>
+            <form hx-post="/meal" hx-target="body" hx-swap="outerHTML">
+                <label>Date</label>
+                <input type="date" name="dateMeal"></input>
+                <label>Moment of meal</label>
+                <select name="moment">
+                    <option value="breakfast">Breafast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                </select>
+                <label>Is it 300g- ?</label>
+                <div></div>
+                <select name="is300g">
+                    <option value="1">yes</option>
+                    <option value="0">no</option>
+                </select>
+                <div></div>
+                <label>Is no sugar meal?</label>
+                <div></div>
+                <select name="isnosugar">
+                    <option value="1">yes</option>
+                    <option value="0">no</option>
+                </select>
+                <div></div>
+                <button type="submit">Add</button>
+            </form>
+        </div>
+        <hr>
+        <div>
+            <h2>List of consumed meals</h2>
+        </div>
+        <div>
+            <div id="tableau-valeurs">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Moment</th>
+                            <th>Is it 300 g ?</th>
+                            <th>Is it a no sugar meal ?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{range .ListMeals}}
+                        <tr>
+                            <td>{{ .Date }}</td>
+                            <td>{{ .Moment }}</td>
+                            <td>{{ .Is300g }}</td>
+                            <td>{{ .IsNoSugar }}</td>
+                        </tr>
+                        {{end}}
+                    </tbody>
+                </table>
+            </div>            
+        </div>
+    </body>
+</html>
